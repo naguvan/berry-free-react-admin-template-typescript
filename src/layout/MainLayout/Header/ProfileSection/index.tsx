@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from "react-redux";
+
 import PerfectScrollbar from "react-perfect-scrollbar";
 import {
   Avatar,
@@ -26,6 +26,7 @@ import {
 import { IconLogout, IconSearch, IconSettings } from "@tabler/icons";
 import UpgradePlanCard from "../../../../ui-component/cards/UpgradePlanCard";
 import User1 from "./../../../../assets/images/users/user-round.svg";
+import {useSelector} from "../../../../store/reducer";
 const useStyles = makeStyles(theme => ({
   navContainer: {
     width: "100%",
@@ -110,7 +111,7 @@ const ProfileSection = () => {
   const [notification, setNotification] = React.useState(false);
   const [selectedIndex] = React.useState(1);
   const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const anchorRef = React.useRef<HTMLDivElement>(null);
   const handleLogout = async () => {
     try {
       //handleClose();
@@ -122,16 +123,16 @@ const ProfileSection = () => {
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
   };
-  const handleClose = event => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  const handleClose = (event: MouseEvent | TouchEvent) => {
+    if (anchorRef?.current?.contains(event.target as HTMLElement)) {
       return;
     }
     setOpen(false);
   };
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
+    if (prevOpen.current && !open) {
+      anchorRef.current?.focus();
     }
     prevOpen.current = open;
   }, [open]);

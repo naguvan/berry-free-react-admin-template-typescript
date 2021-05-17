@@ -30,7 +30,10 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-const Header = props => {
+interface HeaderProps {
+    handleLeftDrawerToggle: (event: React.MouseEvent)=>void
+}
+const Header = (props: HeaderProps) => {
   const { handleLeftDrawerToggle } = props;
   const classes = useStyles();
   return (
@@ -50,7 +53,7 @@ const Header = props => {
           </Avatar>
         </ButtonBase>
       </div>
-      <SearchSection theme="light" />
+      <SearchSection />
       <div className={classes.grow} />
       <div className={classes.grow} />
       <Hidden smDown>

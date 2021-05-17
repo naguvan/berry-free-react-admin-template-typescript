@@ -2,7 +2,7 @@ import * as React from 'react';
 import clsx from "clsx";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { useSelector } from "react-redux";
+
 import {
   Box,
   Button,
@@ -19,11 +19,11 @@ import {
   OutlinedInput,
   Typography
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import useScriptRef from "../../../../hooks/useScriptRef";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Google from "./../../../../assets/images/icons/social-google.svg";
+import {useSelector} from "../../../../store/reducer";
 const useStyles = makeStyles(theme => ({
   root: {},
   redButton: {
@@ -100,19 +100,24 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.grey[500],
     marginTop: "18px",
     width: "auto"
-  }
+  },notchedOutline:{}
 }));
-const FirebaseLogin = (props, { className, ...rest }) => {
+interface FirebaseLoginProps {
+  className?:string;
+  children?: React.ReactNode;
+}
+const FirebaseLogin = (props: FirebaseLoginProps) => {
   const classes = useStyles();
   const customization = useSelector(state => state.customization);
   const scriptedRef = useScriptRef();
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
+  const { className, ...rest } = props;
   const googleHandler = async () => {};
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  const handleMouseDownPassword = event => {
+  const handleMouseDownPassword: React.MouseEventHandler<HTMLButtonElement> = event => {
     event.preventDefault();
   };
   return (

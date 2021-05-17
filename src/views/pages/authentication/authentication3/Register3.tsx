@@ -11,7 +11,7 @@ import {
   useMediaQuery,
   useTheme
 } from "@material-ui/core";
-import FirebaseRgister from "./../firebase-forms/FirebaseRgister";
+import FirebaseRegister from "./../firebase-forms/FirebaseRgister";
 import logo from "./../../../../assets/images/logo.svg";
 const useStyles = makeStyles(theme => ({
   root: {
@@ -138,7 +138,7 @@ const Register = () => {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <FirebaseRgister />
+                    <FirebaseRegister />
                   </Grid>
                   <Grid item xs={12}>
                     <Divider />

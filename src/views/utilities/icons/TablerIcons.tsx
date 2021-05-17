@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     borderColor: theme.palette.primary.light
   }
 }));
-const TablerIcons = props => {
+const TablerIcons = () => {
   const classes = useStyles();
   return (
     <React.Fragment>

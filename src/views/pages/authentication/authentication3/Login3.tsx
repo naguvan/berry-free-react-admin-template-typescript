@@ -138,7 +138,7 @@ const Login = () => {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <FirebaseLogin login={3} />
+                    <FirebaseLogin />
                   </Grid>
                   <Grid item xs={12}>
                     <Divider />

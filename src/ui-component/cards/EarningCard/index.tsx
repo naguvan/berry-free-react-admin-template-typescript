@@ -16,6 +16,7 @@ import GetAppTwoToneIcon from "@material-ui/icons/GetAppOutlined";
 import FileCopyTwoToneIcon from "@material-ui/icons/FileCopyOutlined";
 import PictureAsPdfTwoToneIcon from "@material-ui/icons/PictureAsPdfOutlined";
 import ArchiveTwoToneIcon from "@material-ui/icons/ArchiveOutlined";
+import {MouseEventHandler} from "react";
 const useStyles = makeStyles(theme => ({
   card: {
     backgroundColor: theme.palette.purple.main,
@@ -96,8 +97,8 @@ const useStyles = makeStyles(theme => ({
 }));
 const EarningCard = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = event => {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement|null>(null);
+  const handleClick:MouseEventHandler<HTMLDivElement> = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

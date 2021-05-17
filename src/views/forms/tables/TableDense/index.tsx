@@ -7,13 +7,13 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { gridSpacing } from "./../../../../store/constant";
+import { gridSpacing } from "../../../../store/constant";
 const useStyles = makeStyles({
   table: {
     minWidth: 650
   }
 });
-function createData(name, calories, fat, carbs, protein) {
+function createData(name:string, calories:number, fat:number, carbs:number, protein:number) {
   return { name, calories, fat, carbs, protein };
 }
 const rows = [

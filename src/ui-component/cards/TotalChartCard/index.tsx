@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography.commonAvatar,
     ...theme.typography.mediumAvatar,
     backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary[200],
+    color: theme.palette.primary.light,
     zIndex: 1
   },
   cardHeading: {
@@ -79,12 +79,12 @@ const useStyles = makeStyles(theme => ({
   subHeading: {
     fontSize: "1.5rem",
     fontWeight: 500,
-    color: theme.palette.primary[200]
+    color: theme.palette.primary.light
   },
   avatarCricle: {
     ...theme.typography.smallAvatar,
     cursor: "pointer",
-    backgroundColor: theme.palette.primary[200],
+    backgroundColor: theme.palette.primary.light,
     color: theme.palette.primary.dark
   },
   circleIcon: {
@@ -97,8 +97,8 @@ const useStyles = makeStyles(theme => ({
 }));
 const TotalChartCard = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = event => {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement|null>(null);
+  const handleClick: React.MouseEventHandler<HTMLDivElement>  = event => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

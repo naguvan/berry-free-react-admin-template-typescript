@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   useMediaQuery,
@@ -9,10 +9,12 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography
+  Typography, useTheme
 } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import * as actionTypes from "../../../../../store/actions";
+import {MenuItemType} from "../../../../../menu-items/main-menu-items";
+import {useSelector} from "../../../../../store/reducer";
 const useStyles = makeStyles(theme => ({
   listIcon: {
     minWidth: "18px",
@@ -39,12 +41,20 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start"
   },
   subMenuCaption: {
-    ...theme.typography.subMenuCaption
+    // ...theme.typography.subMenuCaption //todo fix
+  },
+  listCustomIcon:{
+
   }
 }));
-const NavItem = props => {
+interface NavItemProps {
+  item: MenuItemType;
+  level: number;
+}
+const NavItem = (props: NavItemProps) => {
   const classes = useStyles();
-  const matchesSM = useMediaQuery(theme => theme.breakpoints.down("md"));
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down("md"));
   const customization = useSelector(state => state.customization);
   const dispatch = useDispatch();
   const { item, level } = props;

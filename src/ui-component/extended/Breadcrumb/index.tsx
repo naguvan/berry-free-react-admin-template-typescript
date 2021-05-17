@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import {
   Card,
   CardContent,
@@ -16,6 +16,8 @@ import HomeTwoToneIcon from "@material-ui/icons/HomeTwoTone";
 import HomeIcon from "@material-ui/icons/Home";
 import { gridSpacing } from "../../../store/constant";
 import config from "../../../config";
+import {MenuItemType} from "../../../menu-items/main-menu-items";
+import {TablerIcon} from "@tabler/icons";
 const useStyles = makeStyles(theme => ({
   link: {
     display: "flex",
@@ -64,7 +66,19 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(gridSpacing)
   }
 }));
-const Breadcrumbs = props => {
+interface BreadcrumbsProps {
+  navigation: { items: MenuItemType[] }
+  separator?: TablerIcon
+  title: boolean
+  titleBottom: string;
+  icons: boolean
+  icon: boolean
+  maxItems: number
+  card: boolean
+  divider: boolean
+  rightAlign: boolean
+}
+const Breadcrumbs = (props: BreadcrumbsProps) => {
   const classes = useStyles();
   const {
     separator,
@@ -78,17 +92,17 @@ const Breadcrumbs = props => {
     rightAlign,
     ...rest
   } = props;
-  const [main, setMain] = useState([]);
-  const [item, setItem] = useState([]);
+  const [main, setMain] = useState<MenuItemType>();
+  const [item, setItem] = useState<MenuItemType>();
   useEffect(() => {
-    props.navigation.items.map((item, index) => {
+    props.navigation.items.map((item) => {
       if (item.type && item.type === "group") {
-        getCollapse(item, index);
+        getCollapse(item);
       }
       return false;
     });
   });
-  const getCollapse = item => {
+  const getCollapse = (item: MenuItemType) => {
     if (item.children) {
       item.children.filter(collapse => {
         if (collapse.type && collapse.type === "collapse") {
@@ -103,23 +117,24 @@ const Breadcrumbs = props => {
       });
     }
   };
-  const SeparatorIcon = separator;
-  const separatorIcon = separator ? (
-    <SeparatorIcon stroke={1.5} size="1rem" />
-  ) : (
-    "/"
-  );
+  let separatorIcon: React.ReactNode;
+  if (separator) {
+    const SeparatorIcon: TablerIcon = separator;
+    separatorIcon = <SeparatorIcon stroke={1.5} size="1rem"/>
+  } else{
+    separatorIcon = "/"
+  }
   let cardClass = classes.card;
-  if (card === false) {
+  if (!card) {
     cardClass = classes.root;
   }
   let contentClass = classes.content;
-  if (card === false) {
+  if (!card) {
     contentClass = classes.noPadding;
   }
   let mainContent, itemContent;
-  let breadcrumbContent = "";
-  let itemTitle = "";
+  let breadcrumbContent: React.ReactNode = "";
+  let itemTitle: React.ReactNode = "";
   let CollapseIcon;
   let ItemIcon;
   if (main && main.type === "collapse") {
@@ -194,7 +209,7 @@ const Breadcrumbs = props => {
               )}
             </Grid>
           </CardContent>
-          {card === false && divider !== false && (
+          {!card && divider && (
             <Divider className={classes.divider} />
           )}
         </Card>

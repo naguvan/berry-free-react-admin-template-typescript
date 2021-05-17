@@ -45,7 +45,7 @@ import {
   IconTools,
   IconTypography,
   IconUser,
-  IconUserCheck
+  IconUserCheck, TablerIcon
 } from "@tabler/icons";
 const icons = {
   IconDashboard: IconDashboard,
@@ -94,7 +94,33 @@ const icons = {
   IconChartCandle: IconChartCandle,
   IconBasket: IconBasket
 };
-const menuItems = {
+interface Badge {
+  title: string;
+  type: string;
+}
+export interface MenuItemType {
+  id: string;
+  title: string | React.ReactNode;
+  caption?: string| React.ReactNode;
+  type: string;
+  icon?: TablerIcon|string;
+  children?: MenuItemType[];
+  breadcrumbs?: boolean;
+  url?: string;
+  badge?: Badge;
+  target?: boolean;
+  classes?: string;
+  external?: boolean;
+  disabled?: boolean;
+  chip?:{
+    color: "secondary" | "default" | "primary"
+    variant?: "outlined" | "filled"
+    size?: "small" | "medium"
+    label?: React.ReactNode
+    avatar?: React.ReactElement
+  }
+}
+const menuItems: { items: MenuItemType[] } = {
   items: [
     {
       id: "dashboard",
@@ -191,6 +217,7 @@ const menuItems = {
     },
     {
       id: "sample-docs-roadmap",
+      title: '',
       type: "group",
       children: [
         {

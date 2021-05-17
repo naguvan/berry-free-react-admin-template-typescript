@@ -4,10 +4,10 @@ import NavItem from "./../NavItem";
 import NavCollapse from "./../NavCollapse";
 const useStyles = makeStyles(theme => ({
   menuCaption: {
-    ...theme.typography.menuCaption
+   // ...theme.typography.menuCaption // todo fix
   },
   subMenuCaption: {
-    ...theme.typography.subMenuCaption
+    //...theme.typography.subMenuCaption // todo fix
   },
   menuDivider: {
     marginTop: "2px",

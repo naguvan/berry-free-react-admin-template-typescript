@@ -7,7 +7,15 @@ import {
   Typography,
   useTheme
 } from "@material-ui/core";
-const SubCard = ({ title, children, darkTitle, contentClass, secondary }) => {
+interface SubCardProps {
+    title: string;
+    children: string;
+    darkTitle: boolean;
+    contentClass: string;
+    secondary: string;
+}
+const SubCard = (props: SubCardProps) => {
+const { title, children, darkTitle, contentClass, secondary } = props;
   const theme = useTheme();
   return (
     <Card

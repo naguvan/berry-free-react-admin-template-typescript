@@ -75,7 +75,7 @@ const Customization = () => {
     setOpen(!open);
   };
   if (customization.rtlLayout) {
-    document.querySelector("body").setAttribute("dir", "rtl");
+    document.querySelector("body")?.setAttribute("dir", "rtl");
   }
   useEffect(() => {
     dispatch({
@@ -106,7 +106,7 @@ const Customization = () => {
           color="primary"
           onClick={handleToggle}
           size="medium"
-          variant="string"
+          variant="circular"
           sx={{
             bottom: 0,
             margin: theme => theme.spacing(4),

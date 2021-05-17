@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+
 import clsx from "clsx";
 import * as Yup from "yup";
 import { Formik } from "formik";
@@ -30,6 +30,7 @@ import {
   strengthColor,
   strengthIndicator
 } from "../../../../utils/password-strength";
+import {useSelector} from "../../../../store/reducer";
 const useStyles = makeStyles(theme => ({
   root: {},
   redButton: {
@@ -105,30 +106,35 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.grey[500],
     marginTop: "18px",
     width: "auto"
-  }
+  },notchedOutline:{}
 }));
-const FirebaseRgister = ({ className, ...rest }) => {
+interface FirebaseRegisterProps {
+  className?:string;
+  children?: React.ReactNode;
+}
+const FirebaseRegister = (props: FirebaseRegisterProps) => {
   const classes = useStyles();
   const scriptedRef = useScriptRef();
   const customization = useSelector(state => state.customization);
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
   const [strength, setStrength] = React.useState(0);
-  const [level, setLevel] = React.useState("");
+  const { className, ...rest } = props;
+  const [level, setLevel] = React.useState<{label: string; color: string}>();
   const googleHandler = async () => {};
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  const handleMouseDownPassword = event => {
+  const handleMouseDownPassword: (event: React.MouseEvent) => void = event => {
     event.preventDefault();
   };
-  const changePassowd = value => {
+  const changePassword = (value: string) => {
     const temp = strengthIndicator(value);
     setStrength(temp);
     setLevel(strengthColor(temp));
   };
   useEffect(() => {
-    changePassowd("123456");
+    changePassword("123456");
   }, []);
   return (
     <React.Fragment>
@@ -304,7 +310,7 @@ const FirebaseRgister = ({ className, ...rest }) => {
                 onBlur={handleBlur}
                 onChange={e => {
                   handleChange(e);
-                  changePassowd(e.target.value);
+                  changePassword(e.target.value);
                 }}
                 endAdornment={
                   <InputAdornment position="end">
@@ -345,12 +351,12 @@ const FirebaseRgister = ({ className, ...rest }) => {
                         width={85}
                         height={8}
                         borderRadius={7}
-                        backgroundColor={level.color}
+                        // backgroundColor={level.color} // todo fix
                       ></Box>
                     </Grid>
                     <Grid item>
                       <Typography variant="subtitle1" fontSize="0.75rem">
-                        {level.label}
+                        {level?.label}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -407,4 +413,4 @@ const FirebaseRgister = ({ className, ...rest }) => {
     </React.Fragment>
   );
 };
-export default FirebaseRgister;
+export default FirebaseRegister;

@@ -1,6 +1,7 @@
 import * as actionTypes from "./actions";
 import {SNACKBAR_OPEN} from "./actions";
-
+import {SnackbarOrigin} from "@material-ui/core";
+import {Color} from "@material-ui/core/Alert/Alert";
 export const initialState = {
   action: false,
   open: false,
@@ -8,10 +9,10 @@ export const initialState = {
   anchorOrigin: {
     vertical: "bottom",
     horizontal: "right"
-  },
+  } as SnackbarOrigin,
   variant: "default",
-  alertSeverity: "success",
-  transition: "Fade",
+  alertSeverity: "success" as Color,
+  transition: "Fade" as "SlideLeft"| "SlideUp"|  "SlideRight" | "SlideDown" |   "Grow" | "Fade",
   close: true,
   actionButton: false
 };

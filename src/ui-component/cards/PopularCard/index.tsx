@@ -18,6 +18,7 @@ import KeyboardArrowUpOutlinedIcon from "@material-ui/icons/KeyboardArrowUpOutli
 import KeyboardArrowDownOutlinedIcon from "@material-ui/icons/KeyboardArrowDownOutlined";
 import BajajCard from "./BajajCard";
 import { gridSpacing } from "../../../store/constant";
+import {MouseEventHandler} from "react";
 const useStyles = makeStyles(theme => ({
   cardAction: {
     padding: "10px",
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   primaryLight: {
-    color: theme.palette.primary[200],
+    color: theme.palette.primary.light,
     cursor: "pointer"
   },
   divider: {
@@ -57,8 +58,8 @@ const useStyles = makeStyles(theme => ({
 }));
 const PopularCard = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = event => {
+  const [anchorEl, setAnchorEl] = React.useState<SVGSVGElement|null>(null);
+  const handleClick:MouseEventHandler<SVGSVGElement> = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

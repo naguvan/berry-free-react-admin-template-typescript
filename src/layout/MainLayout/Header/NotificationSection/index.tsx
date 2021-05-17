@@ -155,16 +155,16 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       background: theme.palette.primary.light
     }
+  },
+  notificationpoper: {
+      [theme.breakpoints.down('sm')]: {
+          maxWidth: '100% ',
+          //transform: 'none !important',
+          top: '100% !important',
+          left: '0px',
+          right: '0px'
+      }
   }
-  // notificationpoper: {
-  //     [theme.breakpoints.down('sm')]: {
-  //         maxWidth: '100% ',
-  //         //transform: 'none !important',
-  //         top: '100% !important',
-  //         left: '0px',
-  //         right: '0px'
-  //     }
-  // }
 }));
 const status = [
   {
@@ -190,24 +190,24 @@ const NotificationSection = () => {
   const matchesXs = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-  const anchorRef = React.useRef(null);
+  const anchorRef = React.useRef<HTMLDivElement>(null);
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
   };
-  const handleClose = event => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  const handleClose = (event: MouseEvent | TouchEvent) => {
+    if (anchorRef?.current?.contains(event.target as HTMLElement)) {
       return;
     }
     setOpen(false);
   };
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
+    if (prevOpen.current && !open) {
+      anchorRef?.current?.focus();
     }
     prevOpen.current = open;
   }, [open]);
-  const handleChange = event => {
+  const handleChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = event => {
     setValue(event.target.value);
   };
   return (

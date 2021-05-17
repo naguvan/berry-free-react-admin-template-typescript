@@ -145,7 +145,13 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-const Item = props => {
+interface ItemProps {
+  item: {
+    title: string;
+    description: string;
+  }
+}
+const Item = (props: ItemProps) => {
   return (
     <Grid
       container
@@ -201,7 +207,7 @@ const Login = () => {
                 <Grid
                   container
                   direction={matchDownSM ? "column-reverse" : "row"}
-                  alignItems={matchDownSM && "center"}
+                  // alignItems={matchDownSM && "center"} // todo fix
                   justifyContent={matchDownSM ? "center" : "space-between"}
                 >
                   <Grid item>
@@ -210,7 +216,7 @@ const Login = () => {
                         item
                         container
                         direction="column"
-                        alignItems={matchDownSM && "center"}
+                        // alignItems={matchDownSM && "center"} // todo fix
                       >
                         <Grid item>
                           <Typography
@@ -293,16 +299,20 @@ const Login = () => {
               <Grid item>
                 <Box p={10}>
                   <Carousel
+
                     animation="slide"
                     navButtonsAlwaysInvisible
                     autoPlay={false}
                     indicatorIconButtonProps={{
-                      className: classes.indicator
+                      className: classes.indicator,
+                      style:{}
                     }}
                     activeIndicatorIconButtonProps={{
-                      className: classes.activeIndicator
+                      className: classes.activeIndicator,
+                      style:{}
                     }}
                     indicatorContainerProps={{
+                      className: "",
                       style: {
                         marginTop: "32px"
                       }

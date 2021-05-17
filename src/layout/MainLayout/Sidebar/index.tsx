@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import MenuList from "./MenuList";
 import LogoSection from "../LogoSection";
-import { drawerWidth } from "./../../../store/constant";
+import { drawerWidth } from "../../../store/constant";
 import UpgradePlanCard from "../../../ui-component/cards/UpgradePlanCard";
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -42,7 +42,12 @@ const useStyles = makeStyles(theme => ({
     marginRight: "auto"
   }
 }));
-const Sidebar = props => {
+interface SidebarProps {
+  drawerOpen: boolean;
+  drawerToggle: () => void;
+  window: ()=>Window
+}
+const Sidebar = (props: SidebarProps) => {
   const { drawerOpen, drawerToggle, window } = props;
   const classes = useStyles();
   const theme = useTheme();

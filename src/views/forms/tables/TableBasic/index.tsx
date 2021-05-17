@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     minWidth: 350
   }
 });
-function createData(name, calories, fat, carbs, protein) {
+function createData(name: string, calories: number, fat: number, carbs: number, protein: number) {
   return { name, calories, fat, carbs, protein };
 }
 const rows = [

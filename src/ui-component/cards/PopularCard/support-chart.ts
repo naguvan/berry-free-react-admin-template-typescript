@@ -1,5 +1,8 @@
 import value from "../../../assets/scss/_themes-vars.module.scss";
-const chartData = {
+import * as React from 'react'
+import Chart from 'react-apexcharts';
+type ChartProps = React.ComponentProps<typeof Chart>;
+const chartData: ChartProps = {
   type: "area",
   height: 95,
   options: {

@@ -67,7 +67,7 @@ const UpgradePlanCard = () => {
           </Grid>
           <Grid item>
             <Button
-              variant="link"
+              variant="text"
               href="https://berrydashboard.io"
               target="_blank"
               className={classes.button}

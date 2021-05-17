@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from "react-redux";
+
 import {
   Collapse,
   List,
@@ -12,6 +12,9 @@ import {
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons";
 import NavItem from "./../NavItem";
+import {MenuItemType} from "../../../../../menu-items/main-menu-items";
+import {useSelector} from "../../../../../store/reducer";
+
 const useStyles = makeStyles(theme => ({
   collapseIcon: {
     fontSize: "1rem",
@@ -52,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start"
   },
   subMenuCaption: {
-    ...theme.typography.subMenuCaption
+   // ...theme.typography.subMenuCaption // todo fix
   },
   collapseWrapper: {
     position: "relative",
@@ -68,7 +71,11 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-const NavCollapse = props => {
+interface NavCollapseProps {
+  collapse: MenuItemType;
+  type: string;
+}
+const NavCollapse = (props: NavCollapseProps) => {
   const classes = useStyles();
   const customization = useSelector(state => state.customization);
   const { menu, level } = props;

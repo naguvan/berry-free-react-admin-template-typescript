@@ -10,7 +10,15 @@ import {
 } from "@material-ui/core";
 import SubCard from "../../../ui-component/cards/SubCard";
 import { gridSpacing } from "../../../store/constant";
-const ColorBox = props => {
+interface ColorBoxProps {
+  title: string;
+  bgcolor: string;
+  data: {
+    label: string;
+    color: string;
+  }
+}
+const ColorBox = (props: ColorBoxProps) => {
   return (
     <React.Fragment>
       <Card sx={{ mb: 3 }}>

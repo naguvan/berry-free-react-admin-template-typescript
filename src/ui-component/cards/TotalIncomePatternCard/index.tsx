@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     ...theme.typography.commonAvatar,
     ...theme.typography.largeAvatar,
-    backgroundColor: theme.palette.primary[800],
+    backgroundColor: theme.palette.primary.dark,
     color: "#fff"
   },
   primary: {

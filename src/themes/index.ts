@@ -17,13 +17,14 @@ declare module '@material-ui/core/styles' {
 
 declare module "@material-ui/core/styles/createPalette" {
   interface PaletteOptions {
-    purple: SimplePaletteColorOptions | ColorPartial,
+    purple: SimplePaletteColorOptions & ColorPartial,
     orange: SimplePaletteColorOptions,
   }
   interface TypeText {
     dark: string;
     hint: string;
   }
+  interface Palette extends PaletteOptions{}
 }
 
 declare module "@material-ui/core/styles/createTypography" {
@@ -72,6 +73,7 @@ declare module "@material-ui/core/styles/createTypography" {
       fontSize: string;
     }
   }
+  interface Typography extends TypographyOptions {}
 }
 
 export interface NavObject {

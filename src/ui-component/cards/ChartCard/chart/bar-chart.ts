@@ -1,5 +1,9 @@
+
 import value from "../../../../assets/scss/_themes-vars.module.scss";
-const chartData = {
+import * as React from 'react'
+import Chart from 'react-apexcharts';
+type ChartProps = React.ComponentProps<typeof Chart>;
+const chartData: ChartProps = {
   height: 480,
   type: "bar",
   options: {
@@ -36,7 +40,7 @@ const chartData = {
       }
     },
     xaxis: {
-      type: "string",
+      type: "datetime",
       categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
       labels: {
         style: {

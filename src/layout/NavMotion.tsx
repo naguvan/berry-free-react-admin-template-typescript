@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { motion } from "framer-motion";
-const NavMotion = ({ children }) => {
+interface NavMotionProps {
+  children: React.ReactNode;
+}
+const NavMotion = (props: NavMotionProps) => {
   const motionVariants = {
     initial: {
       opacity: 0,
@@ -28,7 +31,7 @@ const NavMotion = ({ children }) => {
       variants={motionVariants}
       transition={motionTransition}
     >
-      {children}
+      {props.children}
     </motion.div>
   );
 };

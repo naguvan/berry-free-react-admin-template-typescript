@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     borderColor: theme.palette.primary.light
   }
 }));
-const MaterialIcons = props => {
+const MaterialIcons = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
