@@ -10,7 +10,8 @@ import MuiTypography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { gridSpacing } from "../../../store/constant";
 import SubCard from "../../../ui-component/cards/SubCard";
-const Typography = props => {
+
+const Typography = () => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>

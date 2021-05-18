@@ -11,7 +11,7 @@ import {
 import SubCard from "../../../ui-component/cards/SubCard";
 import { gridSpacing } from "../../../store/constant";
 interface ColorBoxProps {
-  title: string;
+  title?: string;
   bgcolor: string;
   data: {
     label: string;

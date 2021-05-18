@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+
 import { IntlProvider } from "react-intl";
 import {
   jssPreset,
-  StylesProvider,
+  StylesProvider, Theme,
   ThemeProvider
 } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -18,6 +18,7 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { create } from "jss";
 import rtl from "jss-rtl";
+import {useSelector} from "./store/reducer";
 const jss = create({
   plugins: [...jssPreset().plugins, rtl()]
 });
@@ -33,7 +34,7 @@ const loadLocaleData = (locale: string) => {
 };
 const App = () => {
   const customization = useSelector(state => state.customization);
-  const [messages, setMessages] = useState();
+  const [messages, setMessages] = useState<{[key:string]: any}>();
   useEffect(() => {
     loadLocaleData(customization.locale).then(d => {
       setMessages(d.default);
@@ -55,7 +56,7 @@ const App = () => {
             >
               <StyledEngineProvider injectFirst>
                 <NavigationScroll>
-                  <ThemeProvider theme={theme(customization)}>
+                  <ThemeProvider theme={theme(customization as Theme)}>
                     <CssBaseline />
                     <Routes />
                     <Snackbar />

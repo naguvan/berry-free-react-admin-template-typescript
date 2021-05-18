@@ -4,7 +4,7 @@ const config = {
   defaultPath: "/dashboard/default",
   fontFamily: `'Roboto', sans-serif`,
   borderRadius: 12,
-  theme: "light",
+  theme: "light" as "light" | "dark",
   i18n: "en"
 };
 export default config;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   Avatar,
   Drawer,
@@ -20,7 +20,8 @@ import SettingsSuggestIcon from "@material-ui/icons/SettingsSuggest";
 import SubCard from "../../../../ui-component/cards/SubCard";
 import { gridSpacing } from "../../../../store/constant";
 import * as actionTypes from "../../../../store/actions";
-function valuetext(value) {
+import {useSelector} from "../../../../store/reducer";
+function valuetext(value:number) {
   return `${value}px`;
 }
 const useStyles = makeStyles(theme => ({
@@ -54,8 +55,8 @@ const Customization = () => {
   const [borderRadius, setBorderRadius] = React.useState(
     customization.borderRadius
   );
-  const handleBorderRadius = (event, newValue) => {
-    setBorderRadius(newValue);
+  const handleBorderRadius = (event:object, newValue:number|number[], activeThumb: number) => {
+    setBorderRadius(newValue as number);
   };
   let initialFont;
   switch (customization.fontFamily) {

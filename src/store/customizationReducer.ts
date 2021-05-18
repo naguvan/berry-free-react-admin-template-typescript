@@ -1,13 +1,14 @@
 import * as actionTypes from "./actions";
 import config from "../config";
 import {ACTIONTYPE} from "./actions";
-export const initialState = {
+import {Theme} from "@material-ui/core/styles";
+export const initialState: Partial<Theme> & {isOpen: string; locale: string, opened: boolean} = {
   isOpen: "dashboard",
   fontFamily: config.fontFamily,
   borderRadius: config.borderRadius,
   navType: config.theme,
   locale: config.i18n,
-  rtlLayout: false,
+  rtlLayout: '',
   opened: true
 };
 const customizationReducer = (state = initialState, action: ACTIONTYPE) => {

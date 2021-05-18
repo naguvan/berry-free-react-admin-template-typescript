@@ -70,12 +70,12 @@ interface BreadcrumbsProps {
   navigation: { items: MenuItemType[] }
   separator?: TablerIcon
   title: boolean
-  titleBottom: string;
-  icons: boolean
+  titleBottom?: string;
+  icons?: boolean
   icon: boolean
-  maxItems: number
-  card: boolean
-  divider: boolean
+  maxItems?: number
+  card?: boolean
+  divider?: boolean
   rightAlign: boolean
 }
 const Breadcrumbs = (props: BreadcrumbsProps) => {
@@ -217,6 +217,6 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
     }
     // document.title = itemTitle + config.title;
   }
-  return breadcrumbContent;
+  return <>{breadcrumbContent}</>;
 };
 export default Breadcrumbs;

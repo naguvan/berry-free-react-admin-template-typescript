@@ -69,23 +69,25 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
       background: theme.palette.primary.light
     }
-  }
+  },
+  listCustomIcon: {},
+  listItemTypography:{}
 }));
 interface NavCollapseProps {
-  collapse: MenuItemType;
-  type: string;
+  menu: MenuItemType;
+  level: number;
 }
 const NavCollapse = (props: NavCollapseProps) => {
   const classes = useStyles();
   const customization = useSelector(state => state.customization);
   const { menu, level } = props;
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState(null);
+  const [selected, setSelected] = React.useState<string|null>(null);
   const handleClick = () => {
     setOpen(!open);
     setSelected(!selected ? menu.id : null);
   };
-  const menus = menu.children.map(item => {
+  const menus = menu.children?.map(item => {
     switch (item.type) {
       case "collapse":
         return <NavCollapse key={item.id} menu={item} level={level + 1} />;

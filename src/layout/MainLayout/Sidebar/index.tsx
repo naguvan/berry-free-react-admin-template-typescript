@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 interface SidebarProps {
   drawerOpen: boolean;
   drawerToggle: () => void;
-  window: ()=>Window
+  window?: ()=>Window
 }
 const Sidebar = (props: SidebarProps) => {
   const { drawerOpen, drawerToggle, window } = props;

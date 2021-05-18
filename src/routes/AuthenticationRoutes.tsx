@@ -1,7 +1,7 @@
 import * as React from "react";
 import { lazy } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
-import MinimalLayout from "./../layout/MinimalLayout";
+import MinimalLayout from "../layout/MinimalLayout";
 // login option 3
 const AuthLogin3 = lazy(() =>
   import("../views/pages/authentication/authentication3/Login3")

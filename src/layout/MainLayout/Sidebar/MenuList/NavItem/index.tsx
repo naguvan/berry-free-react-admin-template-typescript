@@ -45,6 +45,9 @@ const useStyles = makeStyles(theme => ({
   },
   listCustomIcon:{
 
+  },
+  menuIcon:{
+
   }
 }));
 interface NavItemProps {
@@ -76,11 +79,11 @@ const NavItem = (props: NavItemProps) => {
   if (item.target) {
     itemTarget = "_blank";
   }
-  let listItemProps = { component: Link, to: item.url };
+  let listItemProps = { component: Link, to: item.url } as {component: React.ElementType, to?: string, href?: string};
   if (item.external) {
     listItemProps = { component: "a", href: item.url };
   }
-  const itemHandler = id => {
+  const itemHandler = (id: string) => {
     dispatch({ type: actionTypes.MENU_OPEN, isOpen: id });
     matchesSM && dispatch({ type: actionTypes.SET_MENU, opened: false });
   };

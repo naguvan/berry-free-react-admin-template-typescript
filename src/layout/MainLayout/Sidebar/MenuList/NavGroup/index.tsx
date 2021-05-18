@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Divider, List, makeStyles, Typography } from "@material-ui/core";
 import NavItem from "./../NavItem";
 import NavCollapse from "./../NavCollapse";
+import {MenuItemType} from "../../../../../menu-items/main-menu-items";
 const useStyles = makeStyles(theme => ({
   menuCaption: {
    // ...theme.typography.menuCaption // todo fix
@@ -14,10 +15,14 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "10px"
   }
 }));
-const NavGroup = props => {
+interface NavGroupProps {
+    item: MenuItemType;
+
+}
+const NavGroup = (props: NavGroupProps) => {
   const { item } = props;
   const classes = useStyles();
-  const items = item.children.map(menu => {
+  const items = item.children?.map(menu => {
     switch (menu.type) {
       case "collapse":
         return <NavCollapse key={menu.id} menu={menu} level={1} />;

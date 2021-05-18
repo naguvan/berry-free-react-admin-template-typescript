@@ -14,7 +14,8 @@ import Sidebar from "./Sidebar";
 import Breadcrumb from "./../../ui-component/extended/Breadcrumb";
 import navigation from "./../../menu-items/main-menu-items";
 import { IconChevronRight } from "@tabler/icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {useSelector} from "../../store/reducer";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -62,7 +63,12 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-const MainLayout = ({ children, showBreadcrumb = true }) => {
+interface MainLayoutProps {
+  children: React.ReactNode;
+  showBreadcrumb?: boolean
+}
+const MainLayout = (props: MainLayoutProps) => {
+  const { children, showBreadcrumb = true } = props;
   const classes = useStyles();
   const theme = useTheme();
   const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -73,7 +79,7 @@ const MainLayout = ({ children, showBreadcrumb = true }) => {
     dispatch({ type: "SET_MENU", opened: !leftDrawerOpened });
   };
   React.useEffect(() => {
-    const openLeftDrawerState = val => {
+    const openLeftDrawerState = (val:boolean) => {
       dispatch({ type: "SET_MENU", opened: val });
     };
     openLeftDrawerState(matchUpMd);

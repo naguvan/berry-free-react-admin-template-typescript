@@ -3,6 +3,6 @@ interface MinimalLayoutProps {
 children: React.ReactNode
 }
 const MinimalLayout = (props: MinimalLayoutProps) => {
-  return props.children;
+  return <>{props.children}</>;
 };
 export default MinimalLayout;
