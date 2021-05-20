@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {
   Collapse,
@@ -73,10 +73,12 @@ const useStyles = makeStyles(theme => ({
   listCustomIcon: {},
   listItemTypography:{}
 }));
+
 interface NavCollapseProps {
   menu: MenuItemType;
   level: number;
 }
+
 const NavCollapse = (props: NavCollapseProps) => {
   const classes = useStyles();
   const customization = useSelector(state => state.customization);
@@ -111,7 +113,7 @@ const NavCollapse = (props: NavCollapseProps) => {
           ? classes.listCustomIconSubActive
           : classes.listCustomIconSub
       }
-      fontSize={level > 0 ? "inherit" : "default"}
+      // fontSize={level > 0 ? "inherit" : "default"}
     />
   );
   let menuIconClass = !menu.icon ? classes.listIcon : classes.menuIcon;

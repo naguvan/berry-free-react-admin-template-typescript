@@ -71,7 +71,7 @@ const NavItem = (props: NavItemProps) => {
           ? classes.listCustomIconSubActive
           : classes.listCustomIconSub
       }
-      fontSize={level > 0 ? "inherit" : "default"}
+      // fontSize={level > 0 ? "inherit" : "default"}
     />
   );
   let itemIconClass = !item.icon ? classes.listIcon : classes.menuIcon;

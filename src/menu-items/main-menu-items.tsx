@@ -103,7 +103,7 @@ export interface MenuItemType {
   title: string | React.ReactNode;
   caption?: string| React.ReactNode;
   type: string;
-  icon?: TablerIcon|string;
+  icon?: TablerIcon|string|any;
   children?: MenuItemType[];
   breadcrumbs?: boolean;
   url?: string;
