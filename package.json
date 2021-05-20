@@ -7,9 +7,9 @@
         "@emotion/react": "^11.4.0",
         "@emotion/styled": "^11.3.0",
         "@material-ui/core": "5.0.0-alpha.32",
-        "@material-ui/icons": "^5.0.0-alpha.29",
-        "@material-ui/lab": "^5.0.0-alpha.32",
-        "@material-ui/styles": "^5.0.0-alpha.32",
+        "@material-ui/icons": "5.0.0-alpha.29",
+        "@material-ui/lab": "5.0.0-alpha.32",
+        "@material-ui/styles": "5.0.0-alpha.32",
         "@tabler/icons": "^1.41.2",
         "@types/jest": "^26.0.23",
         "@types/node": "^15.3.0",
@@ -33,11 +33,11 @@
         "react-scripts": "^4.0.3",
         "redux": "^4.1.0",
         "stylis-plugin-rtl": "^2.1.0",
-        "typescript": "^4.3.0",
+        "typescript": "4.2.4",
         "yup": "^0.32.9"
     },
     "scripts": {
-        "start": "TSC_COMPILE_ON_ERROR=true react-scripts start",
+        "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
@@ -58,8 +58,8 @@
         ]
     },
     "devDependencies": {
-        "@types/react": "^17.0.5",
-        "@types/react-dom": "^17.0.5",
+        "@types/react": "^17.0.2",
+        "@types/react-dom": "^17.0.2",
         "@types/react-redux": "^7.1.16",
         "@types/react-router": "^5.1.14",
         "@types/react-router-dom": "^5.1.7",
